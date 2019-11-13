@@ -1,4 +1,4 @@
-# react-browser-starter
+# react-flux-browser-starter
 Simple starter project for react in browser
 
 # Getting Started
