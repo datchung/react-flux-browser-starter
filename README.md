@@ -1,5 +1,5 @@
 # react-redux-browser-starter
-Simple starter project for react in browser
+Simple starter project for react + redux in browser
 
 # Getting Started
 
