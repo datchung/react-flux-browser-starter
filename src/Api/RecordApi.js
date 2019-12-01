@@ -34,6 +34,18 @@ export function saveRecord(record) {
   return record;
 }
 
+export function deleteRecord(id) {
+  var records = RecordPersistence.getSavedRecords();
+
+  if(!records) return;
+  if(!records.find(r => r.id === id)) return;
+
+  var modifiedRecords = records.filter(r => r.id != id);
+  
+  RecordPersistence.saveRecords(modifiedRecords);
+  return modifiedRecords;
+}
+
 function saveRecords(records) {
   return RecordPersistence.saveRecords(records);
 }

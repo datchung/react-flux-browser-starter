@@ -33,7 +33,7 @@ const RecordList = ({ records, onDeleteClick }) => (
             <td>
               <button
                 className="btn btn-outline-danger"
-                // onClick={() => onDeleteClick(record)}
+                onClick={() => onDeleteClick(record)}
               >
                 Delete
               </button>
@@ -47,7 +47,7 @@ const RecordList = ({ records, onDeleteClick }) => (
 
 RecordList.propTypes = {
   records: PropTypes.array.isRequired,
-  // onDeleteClick: PropTypes.func.isRequired
+  onDeleteClick: PropTypes.func.isRequired
 };
 
 export default RecordList;

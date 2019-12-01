@@ -6,10 +6,11 @@ import { bindActionCreators } from "redux";
 import RecordList from "./RecordList";
 import { Redirect } from "react-router-dom";
 import Spinner from "../Common/Spinner";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 class RecordsPage extends React.Component {
   state = {
+    // loading: false,
     redirectToAddRecordPage: false
   };
 
@@ -23,20 +24,23 @@ class RecordsPage extends React.Component {
     }
   }
 
-  // handleDeleteCourse = async course => {
-  //   toast.success("Course deleted");
-  //   try {
-  //     await this.props.actions.deleteCourse(course);
-  //   } catch (error) {
-  //     toast.error("Delete failed. " + error.message, { autoClose: false });
-  //   }
-  // };
+  handleDeleteRecord = async record => {
+    // this.state.loading = true;
+    try {
+      await this.props.actions.deleteRecord(record.id);
+      // this.state.loading = false;
+      toast.success("Record deleted");
+    } catch (error) {
+      toast.error("Delete failed. " + error.message, { autoClose: false });
+    }
+  };
 
   render() {
     return (
       <>
         {this.state.redirectToAddRecordPage && <Redirect to="/record" />}
         <h2>Records</h2>
+        {/* {(this.props.loading || this.state.loading) ? ( */}
         {this.props.loading ? (
           <Spinner />
         ) : (
@@ -50,7 +54,7 @@ class RecordsPage extends React.Component {
             </button>
 
             <RecordList
-              // onDeleteClick={this.handleDeleteCourse}
+              onDeleteClick={this.handleDeleteRecord}
               records={this.props.records}
             />
           </>
@@ -76,7 +80,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      loadRecords: bindActionCreators(recordActions.loadRecords, dispatch)
+      loadRecords: bindActionCreators(recordActions.loadRecords, dispatch),
+      deleteRecord: bindActionCreators(recordActions.deleteRecord, dispatch),
     }
   };
 }
