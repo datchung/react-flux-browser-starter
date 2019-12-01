@@ -7,8 +7,8 @@ export function loadRecordsSuccess(records) {
   return { type: types.LOAD_RECORDS_SUCCESS, records };
 }
 
-export function saveRecordsSuccess(records) {
-  return { type: types.SAVE_RECORDS_SUCCESS, records };
+export function saveRecordSuccess(record) {
+  return { type: types.SAVE_RECORD_SUCCESS, record };
 }
 
 export function loadRecords() {
@@ -35,23 +35,23 @@ export function loadRecords() {
   };
 }
 
-export function saveRecords(records) {
+export function saveRecord(record) {
   return function(dispatch) {
     
     dispatch(beginApiCall());
 
     var promise = new Promise(function(resolve, reject) {
       try {
-        recordApi.saveRecords(records);
-        resolve(records);
+        recordApi.saveRecord(record);
+        resolve(record);
       }
       catch(error) {
         reject(error);
       }
     });
     return promise
-      .then(savedRecords => {
-        dispatch(saveRecordsSuccess(savedRecords));
+      .then(savedRecord => {
+        dispatch(saveRecordSuccess(savedRecord));
       })
       .catch(error => {
         dispatch(apiCallError(error));

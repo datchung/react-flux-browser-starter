@@ -84,9 +84,15 @@ const newCourse = {
   category: ""
 };
 
+const newRecord = {
+  id: null,
+  text: ""
+};
+
 // Using CommonJS style export so we can consume via Node (without using Babel-node)
 module.exports = {
   newCourse,
   courses,
-  authors
+  authors,
+  newRecord
 };

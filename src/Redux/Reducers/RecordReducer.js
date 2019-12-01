@@ -4,8 +4,8 @@ import initialState from "./InitialState";
 
 export default function recordReducer(state = initialState.records, action) {
   switch (action.type) {
-    case types.SAVE_RECORDS_SUCCESS:
-      return action.records;
+    case types.SAVE_RECORD_SUCCESS:
+      return [...state, { ...action.record }];
     case types.LOAD_RECORDS_SUCCESS:
       return action.records;
     // case types.ADD_RECORD:

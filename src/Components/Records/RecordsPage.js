@@ -4,14 +4,14 @@ import * as recordActions from "../../Redux/Actions/RecordActions";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import RecordList from "./RecordList";
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Spinner from "../Common/Spinner";
 // import { toast } from "react-toastify";
 
 class RecordsPage extends React.Component {
-  // state = {
-  //   redirectToAddRecordPage: false
-  // };
+  state = {
+    redirectToAddRecordPage: false
+  };
 
   componentDidMount() {
     const { records, actions } = this.props;
@@ -35,19 +35,19 @@ class RecordsPage extends React.Component {
   render() {
     return (
       <>
-        {/* {this.state.redirectToAddCoursePage && <Redirect to="/course" />} */}
+        {this.state.redirectToAddRecordPage && <Redirect to="/record" />}
         <h2>Records</h2>
         {this.props.loading ? (
           <Spinner />
         ) : (
           <>
-            {/* <button
+            <button
               style={{ marginBottom: 20 }}
-              className="btn btn-primary add-course"
-              onClick={() => this.setState({ redirectToAddCoursePage: true })}
+              className="btn btn-primary add-record"
+              onClick={() => this.setState({ redirectToAddRecordPage: true })}
             >
-              Add Course
-            </button> */}
+              Add Record
+            </button>
 
             <RecordList
               // onDeleteClick={this.handleDeleteCourse}

@@ -7,7 +7,7 @@ const RecordList = ({ records, onDeleteClick }) => (
     <thead>
       <tr>
         <th />
-        <th>Title</th>
+        <th>Text</th>
         <th>Author</th>
         <th>Category</th>
         <th />
@@ -26,7 +26,7 @@ const RecordList = ({ records, onDeleteClick }) => (
               </a>
             </td>
             <td>
-              <Link to={"/record/" + record.slug}>{record.title}</Link>
+              <Link to={"/record/" + record.id}>{record.text}</Link>
             </td>
             <td>{record.authorName}</td>
             <td>{record.category}</td>
