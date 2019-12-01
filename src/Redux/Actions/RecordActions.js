@@ -14,38 +14,48 @@ export function saveRecordsSuccess(records) {
 export function loadRecords() {
   return function(dispatch) {
     dispatch(beginApiCall());
-    try {
-      var records = recordApi.getRecords();
-      dispatch(loadRecordsSuccess(records));
-    }
-    catch(error) {
-      dispatch(apiCallError(error));
-    }
+
+    var promise = new Promise(function(resolve, reject) {
+      try {
+        var records = recordApi.getRecords();
+        resolve(records);
+      }
+      catch(error) {
+        reject(error);
+      }
+    });
+    return promise
+      .then(records => {
+        dispatch(loadRecordsSuccess(records));
+      })
+      .catch(error => {
+        dispatch(apiCallError(error));
+        throw error;
+      });
   };
 }
 
 export function saveRecords(records) {
   return function(dispatch) {
+    
     dispatch(beginApiCall());
-    try {
-      recordApi.saveRecords(records);
-      dispatch(saveRecordsSuccess(records));
-    }
-    catch(error) {
-      dispatch(apiCallError(error));
-    }
+
+    var promise = new Promise(function(resolve, reject) {
+      try {
+        recordApi.saveRecords(records);
+        resolve(records);
+      }
+      catch(error) {
+        reject(error);
+      }
+    });
+    return promise
+      .then(savedRecords => {
+        dispatch(saveRecordsSuccess(savedRecords));
+      })
+      .catch(error => {
+        dispatch(apiCallError(error));
+        throw error;
+      });
   };
 }
-
-// export function loadRecords() {
-//   return function() {
-//     return recordApi.getRecords();
-//   };
-// }
-
-// export function saveRecords(records) {
-//   return function() {
-//     return recordApi
-//       .saveRecords(records);
-//   };
-// }

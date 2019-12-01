@@ -5,5 +5,5 @@ export function getRecords() {
 }
 
 export function saveRecords(records) {
-  RecordPersistence.saveRecords(records);
+  return RecordPersistence.saveRecords(records);
 }

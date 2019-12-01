@@ -19,6 +19,7 @@ var RecordPersistence = (function() {
 
   function saveRecords(records) {
     localStorage[_getRecordsStorageKey()] = JSON.stringify(records);
+    return records;
   }
 
   return {
