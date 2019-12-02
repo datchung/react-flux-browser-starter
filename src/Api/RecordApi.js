@@ -1,12 +1,17 @@
 import RecordPersistence from './RecordPersistence';
 import uuid from 'uuid';
 
+var recordPersistence = RecordPersistence;
+export function setRecordPersistence(rp) {
+  recordPersistence = rp;
+}
+
 export function getRecords() {
-  return RecordPersistence.getSavedRecords();
+  return recordPersistence.getSavedRecords();
 }
 
 export function saveRecord(record) {
-  var records = RecordPersistence.getSavedRecords();
+  var records = recordPersistence.getSavedRecords();
 
   if(!record.id || !records) {
     // Add new record
@@ -30,22 +35,22 @@ export function saveRecord(record) {
     return record;
   });
 
-  RecordPersistence.saveRecords(modifiedRecords);
+  recordPersistence.saveRecords(modifiedRecords);
   return record;
 }
 
 export function deleteRecord(id) {
-  var records = RecordPersistence.getSavedRecords();
+  var records = recordPersistence.getSavedRecords();
 
   if(!records) return;
   if(!records.find(r => r.id === id)) return;
 
   var modifiedRecords = records.filter(r => r.id != id);
   
-  RecordPersistence.saveRecords(modifiedRecords);
+  recordPersistence.saveRecords(modifiedRecords);
   return modifiedRecords;
 }
 
 function saveRecords(records) {
-  return RecordPersistence.saveRecords(records);
+  return recordPersistence.saveRecords(records);
 }
