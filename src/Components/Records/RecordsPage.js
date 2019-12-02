@@ -1,9 +1,10 @@
+import * as recordActions from "../../Redux/Actions/RecordActions";
+import RecordList from "./RecordList";
+import T from '../../Localization/i18n';
 import React from "react";
 import { connect } from "react-redux";
-import * as recordActions from "../../Redux/Actions/RecordActions";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
-import RecordList from "./RecordList";
 import { Redirect } from "react-router-dom";
 import Spinner from "../Common/Spinner";
 import { toast } from "react-toastify";
@@ -45,13 +46,15 @@ class RecordsPage extends React.Component {
           <Spinner />
         ) : (
           <>
-            <button
-              style={{ marginBottom: 20 }}
-              className="btn btn-primary add-record"
-              onClick={() => this.setState({ redirectToAddRecordPage: true })}
-            >
-              Add Record
-            </button>
+            <div className="card">
+              <div className="card-content">
+                <button
+                  className="button is-primary is-fullwidth"
+                  onClick={() => this.setState({ redirectToAddRecordPage: true })}>
+                  {T.t("createRecord")}
+                </button>
+              </div>
+            </div>
 
             <RecordList
               onDeleteClick={this.handleDeleteRecord}
