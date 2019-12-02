@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bulma/css/bulma.min.css";
 import App from "./Components/App";
 import "./index.css";
 import configureStore from "./Redux/ConfigureStore";
