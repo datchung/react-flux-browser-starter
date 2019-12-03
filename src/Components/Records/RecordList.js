@@ -1,43 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import Record from './Record';
 
-const RecordList = ({ records, onDeleteClick }) => (
-  <table className="table">
-    <thead>
-      <tr>
-        <th>Text</th>
-        <th>Created</th>
-        <th>Modified</th>
-        <th />
-      </tr>
-    </thead>
-    <tbody>
-      {records.map(record => {
-        return (
-          <tr key={record.id}>
-            <td>
-              <Link to={"/record/" + record.id}>{record.text}</Link>
-            </td>
-            <td>{record.dateCreated}</td>
-            <td>{record.dateModified}</td>
-            <td>
-              <button
-                className="btn btn-outline-danger"
-                onClick={() => onDeleteClick(record)}
+const RecordList = ({ records, onToggleClick, onDeleteClick }) => (
+  <>
+    {records.map(record => {
+      return (
+        <div
+          key={record.id}
+          className="card"
+          >
+            <div
+              className="card-content"
               >
-                Delete
-              </button>
-            </td>
-          </tr>
-        );
-      })}
-    </tbody>
-  </table>
+              <Record
+                record={record}
+                onToggleClick={onToggleClick}
+                onDeleteClick={onDeleteClick}
+                />
+            </div>
+        </div>
+      );
+    })}
+  </>
 );
 
 RecordList.propTypes = {
   records: PropTypes.array.isRequired,
+  onToggleClick: PropTypes.func.isRequired,
   onDeleteClick: PropTypes.func.isRequired
 };
 

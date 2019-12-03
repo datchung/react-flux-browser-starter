@@ -10,6 +10,10 @@ export function saveRecordSuccess(record) {
   return { type: types.SAVE_RECORD_SUCCESS, record };
 }
 
+export function toggleRecordSuccess(record) {
+  return { type: types.TOGGLE_RECORD_SUCCESS, record };
+}
+
 export function deleteRecordSuccess(id) {
   return { type: types.DELETE_RECORD_SUCCESS, id };
 }
@@ -43,8 +47,7 @@ export function saveRecord(record) {
 
     var promise = new Promise(function(resolve, reject) {
       try {
-        recordApi.saveRecord(record);
-        resolve(record);
+        resolve(recordApi.saveRecord(record));
       }
       catch(error) {
         reject(error);
@@ -53,6 +56,29 @@ export function saveRecord(record) {
     return promise
       .then(savedRecord => {
         dispatch(saveRecordSuccess(savedRecord));
+      })
+      .catch(error => {
+        dispatch(apiCallError(error));
+        throw error;
+      });
+  };
+}
+
+export function toggleRecord(record) {
+  return function(dispatch) {
+    dispatch(beginApiCall());
+
+    var promise = new Promise(function(resolve, reject) {
+      try {
+        resolve(recordApi.toggleRecord(record));
+      }
+      catch(error) {
+        reject(error);
+      }
+    });
+    return promise
+      .then(savedRecord => {
+        dispatch(toggleRecordSuccess(savedRecord));
       })
       .catch(error => {
         dispatch(apiCallError(error));

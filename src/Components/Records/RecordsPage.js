@@ -36,6 +36,14 @@ class RecordsPage extends React.Component {
     }
   };
 
+  handleToggleRecord = async record => {
+    try {
+      await this.props.actions.toggleRecord(record);
+    } catch (error) {
+      toast.error("Toggle failed. " + error.message, { autoClose: false });
+    }
+  };
+
   render() {
     return (
       <>
@@ -57,6 +65,7 @@ class RecordsPage extends React.Component {
             </div>
 
             <RecordList
+              onToggleClick={this.handleToggleRecord}
               onDeleteClick={this.handleDeleteRecord}
               records={this.props.records}
             />
@@ -84,7 +93,8 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: {
       loadRecords: bindActionCreators(recordActions.loadRecords, dispatch),
-      deleteRecord: bindActionCreators(recordActions.deleteRecord, dispatch),
+      toggleRecord: bindActionCreators(recordActions.toggleRecord, dispatch),
+      deleteRecord: bindActionCreators(recordActions.deleteRecord, dispatch)
     }
   };
 }

@@ -16,6 +16,7 @@ export function saveRecord(record) {
   if(!record.id || !records) {
     // Add new record
     record.id = uuid();
+    record.isComplete = false;
     record.dateCreated = + new Date();
     record.dateModified = + record.dateCreated;
     saveRecords([...records, record]);
@@ -25,11 +26,10 @@ export function saveRecord(record) {
   // Update existing record
   var modifiedRecords = records.map(r => {
     if(r.id !== record.id) return r;
-    
     record = {
-      id: r.id,
+      ...r,
       text: record.text,
-      dateCreated: r.dateCreated,
+      isComplete: record.isComplete,
       dateModified: + new Date()
     };
     return record;
@@ -37,6 +37,13 @@ export function saveRecord(record) {
 
   recordPersistence.saveRecords(modifiedRecords);
   return record;
+}
+
+export function toggleRecord(record) {
+  return saveRecord({
+    ...record,
+    isComplete: !record.isComplete
+  });
 }
 
 export function deleteRecord(id) {
