@@ -1,6 +1,7 @@
 import * as recordActions from "../../Redux/Actions/RecordActions";
 import RecordList from "./RecordList";
 import Back from "../Common/Back";
+import PageTitle from "../Common/PageTitle";
 import T from '../../Localization/i18n';
 import React from "react";
 import { connect } from "react-redux";
@@ -49,13 +50,13 @@ class RecordsPage extends React.Component {
     return (
       <>
         {this.state.redirectToAddRecordPage && <Redirect to="/record" />}
-        <h2>Records</h2>
         {/* {(this.props.loading || this.state.loading) ? ( */}
+        <Back history={this.props.history} />
+        <PageTitle title="Records" />
         {this.props.loading ? (
           <Spinner />
         ) : (
           <>
-            <Back history={this.props.history} />
             <div className="card">
               <div className="card-content">
                 <button
