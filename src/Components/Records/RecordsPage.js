@@ -1,5 +1,6 @@
 import * as recordActions from "../../Redux/Actions/RecordActions";
 import RecordList from "./RecordList";
+import Back from "../Common/Back";
 import T from '../../Localization/i18n';
 import React from "react";
 import { connect } from "react-redux";
@@ -54,6 +55,7 @@ class RecordsPage extends React.Component {
           <Spinner />
         ) : (
           <>
+            <Back history={this.props.history} />
             <div className="card">
               <div className="card-content">
                 <button
@@ -77,6 +79,7 @@ class RecordsPage extends React.Component {
 }
 
 RecordsPage.propTypes = {
+  history: PropTypes.object.isRequired,
   records: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired
