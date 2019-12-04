@@ -1,0 +1,56 @@
+Minimalist Task List
+
+Edit Task
+Create New Task
+
+all
+
+not done
+done
+incomplete
+complete
+not finished
+finished
+
+New to Old
+Old to New
+
+Text is required
+
+No tasks.
+Click the button below to add.
+
+Congratulations.
+All tasks completed.
+
+1 of 1 task remaining
+2 of 3 tasks remaining
+
+task
+tasks
+
+Clean the house
+Wash car
+Study for test
+
+
+Simplified task list. Stripped down to the minimum and core features.
+
+
+Less is more.
+
+Minimal in every way:
+
+Stripped down to the core features of a todo list/task list/checklist.
+
+No unnecessary permissions required.
+
+Small app size.
+
+Simple and lightweight user interface.
+
+
+Icon made by Roundicons from www.flaticon.com
+https://www.flaticon.com/authors/roundicons
+
+Graphics from https://gallery.manypixels.co
