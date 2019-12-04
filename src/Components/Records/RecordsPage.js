@@ -2,6 +2,7 @@ import * as recordActions from "../../Redux/Actions/RecordActions";
 import RecordList from "./RecordList";
 import Back from "../Common/Back";
 import PageTitle from "../Common/PageTitle";
+import FilterSort from "../Common/FilterSort";
 import T from '../../Localization/i18n';
 import React from "react";
 import { connect } from "react-redux";
@@ -14,7 +15,18 @@ import { toast } from "react-toastify";
 class RecordsPage extends React.Component {
   state = {
     // loading: false,
-    redirectToAddRecordPage: false
+    redirectToAddRecordPage: false,
+    filterOptions: [
+      T.t("all"),
+      T.t("notDone"),
+      T.t("done")
+    ],
+    selectedFilter: T.t("all"),
+    sortOptions: [
+      T.t("newestFirst"),
+      T.t("oldestFirst")
+    ],
+    selectedSort: T.t("newestFirst")
   };
 
   componentDidMount() {
@@ -46,6 +58,14 @@ class RecordsPage extends React.Component {
     }
   };
 
+  handleFilter() {
+    // TODO
+  }
+
+  handleSort() {
+    // TODO
+  }
+
   render() {
     return (
       <>
@@ -57,6 +77,14 @@ class RecordsPage extends React.Component {
           <Spinner />
         ) : (
           <>
+            <FilterSort
+              filterOptions={this.state.filterOptions}
+              selectedFilter={this.state.selectedFilter}
+              onFilter={this.handleFilter}
+              sortOptions={this.state.sortOptions}
+              selectedSort={this.state.selectedSort}
+              onSort={this.handleSort}
+              />
             <div className="card">
               <div className="card-content">
                 <button
