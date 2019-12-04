@@ -23,6 +23,31 @@ export function getFilteredRecords(filter) {
   }
 }
 
+export function getSortedRecords(sort) {
+  var records = recordPersistence.getSavedRecords();
+  
+  switch(sort) {
+    case "newestFirst":
+      return records.sort(compareRecordsDescending);
+    case "oldestFirst":
+      return records.sort(compareRecordsAscending);
+    default:
+      return records;
+  }
+}
+
+function compareRecordsDescending(r1, r2) {
+  if(r1.dateModified < r2.dateModified) return 1;
+  if(r1.dateModified > r2.dateModified) return -1;
+  return 0;
+}
+
+function compareRecordsAscending(r1, r2) {
+  if(r1.dateModified < r2.dateModified) return -1;
+  if(r1.dateModified > r2.dateModified) return 1;
+  return 0;
+}
+
 export function saveRecord(record) {
   var records = recordPersistence.getSavedRecords();
 

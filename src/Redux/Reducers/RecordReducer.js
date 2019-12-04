@@ -12,6 +12,7 @@ export default function recordReducer(state = initialState.records, action) {
       });
     case types.LOAD_RECORDS_SUCCESS:
     case types.FILTER_RECORDS_SUCCESS:
+    case types.SORT_RECORDS_SUCCESS:
       return action.records;
     case types.DELETE_RECORD_SUCCESS:
       return state.filter(s => s.id != action.id);

@@ -72,6 +72,29 @@ export function filterRecords(filter) {
   };
 }
 
+export function sortRecords(filter) {
+  return function(dispatch) {
+    dispatch(beginApiCall());
+
+    var promise = new Promise(function(resolve, reject) {
+      try {
+        resolve(recordApi.getSortedRecords(filter));
+      }
+      catch(error) {
+        reject(error);
+      }
+    });
+    return promise
+      .then(records => {
+        dispatch(sortRecordsSuccess(records));
+      })
+      .catch(error => {
+        dispatch(apiCallError(error));
+        throw error;
+      });
+  };
+}
+
 export function saveRecord(record) {
   return function(dispatch) {
     dispatch(beginApiCall());

@@ -65,7 +65,16 @@ class RecordsPage extends React.Component {
   }
 
   handleSort = async event => {
-    // TODO
+    try {
+      var sort = event.target.value;
+      await this.props.actions.sortRecords(sort);
+      this.setState({
+        ...this.state,
+        selectedSort: sort
+      });
+    } catch (error) {
+      toast.error("Sort failed. " + error.message, { autoClose: false });
+    }
   }
 
   render() {
@@ -128,6 +137,7 @@ function mapDispatchToProps(dispatch) {
     actions: {
       loadRecords: bindActionCreators(recordActions.loadRecords, dispatch),
       filterRecords: bindActionCreators(recordActions.filterRecords, dispatch),
+      sortRecords: bindActionCreators(recordActions.sortRecords, dispatch),
       toggleRecord: bindActionCreators(recordActions.toggleRecord, dispatch),
       deleteRecord: bindActionCreators(recordActions.deleteRecord, dispatch)
     }
