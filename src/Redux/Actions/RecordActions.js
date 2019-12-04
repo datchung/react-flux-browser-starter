@@ -18,6 +18,14 @@ export function deleteRecordSuccess(id) {
   return { type: types.DELETE_RECORD_SUCCESS, id };
 }
 
+export function filterRecordsSuccess(records) {
+  return { type: types.FILTER_RECORDS_SUCCESS, records };
+}
+
+export function sortRecordsSuccess(records) {
+  return { type: types.SORT_RECORDS_SUCCESS, records };
+}
+
 export function loadRecords() {
   return function(dispatch) {
     dispatch(beginApiCall());
@@ -33,6 +41,29 @@ export function loadRecords() {
     return promise
       .then(records => {
         dispatch(loadRecordsSuccess(records));
+      })
+      .catch(error => {
+        dispatch(apiCallError(error));
+        throw error;
+      });
+  };
+}
+
+export function filterRecords(filter) {
+  return function(dispatch) {
+    dispatch(beginApiCall());
+
+    var promise = new Promise(function(resolve, reject) {
+      try {
+        resolve(recordApi.getFilteredRecords(filter));
+      }
+      catch(error) {
+        reject(error);
+      }
+    });
+    return promise
+      .then(records => {
+        dispatch(filterRecordsSuccess(records));
       })
       .catch(error => {
         dispatch(apiCallError(error));

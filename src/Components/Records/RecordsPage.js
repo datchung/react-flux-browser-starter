@@ -16,17 +16,10 @@ class RecordsPage extends React.Component {
   state = {
     // loading: false,
     redirectToAddRecordPage: false,
-    filterOptions: [
-      T.t("all"),
-      T.t("notDone"),
-      T.t("done")
-    ],
-    selectedFilter: T.t("all"),
-    sortOptions: [
-      T.t("newestFirst"),
-      T.t("oldestFirst")
-    ],
-    selectedSort: T.t("newestFirst")
+    filterOptions: ["all", "notDone", "done"],
+    selectedFilter: "all",
+    sortOptions: ["newestFirst", "oldestFirst"],
+    selectedSort: "newestFirst"
   };
 
   componentDidMount() {
@@ -58,11 +51,20 @@ class RecordsPage extends React.Component {
     }
   };
 
-  handleFilter() {
-    // TODO
+  handleFilter = async event => {
+    try {
+      var filter = event.target.value;
+      await this.props.actions.filterRecords(filter);
+      this.setState({
+        ...this.state,
+        selectedFilter: filter
+      });
+    } catch (error) {
+      toast.error("Filter failed. " + error.message, { autoClose: false });
+    }
   }
 
-  handleSort() {
+  handleSort = async event => {
     // TODO
   }
 
@@ -125,6 +127,7 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: {
       loadRecords: bindActionCreators(recordActions.loadRecords, dispatch),
+      filterRecords: bindActionCreators(recordActions.filterRecords, dispatch),
       toggleRecord: bindActionCreators(recordActions.toggleRecord, dispatch),
       deleteRecord: bindActionCreators(recordActions.deleteRecord, dispatch)
     }

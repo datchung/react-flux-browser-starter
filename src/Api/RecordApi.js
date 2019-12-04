@@ -10,6 +10,19 @@ export function getRecords() {
   return recordPersistence.getSavedRecords();
 }
 
+export function getFilteredRecords(filter) {
+  var records = recordPersistence.getSavedRecords();
+  
+  switch(filter) {
+    case "notDone":
+      return records.filter(r => !r.isComplete);
+    case "done":
+        return records.filter(r => r.isComplete);
+    default:
+        return records;
+  }
+}
+
 export function saveRecord(record) {
   var records = recordPersistence.getSavedRecords();
 
