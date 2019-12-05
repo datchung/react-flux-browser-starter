@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { loadRecords, saveRecord } from "../../Redux/Actions/RecordActions";
+import T from '../../Localization/i18n';
+import Back from "../Common/Back";
+import PageTitle from "../Common/PageTitle";
 import PropTypes from "prop-types";
 import RecordForm from "./RecordForm";
 import { newRecord } from "../../../tools/mockData";
-import Spinner from "../Common/Spinner";
+//import Spinner from "../Common/Spinner";
 import { toast } from "react-toastify";
 
 export function ManageRecordPage({
@@ -21,7 +24,9 @@ export function ManageRecordPage({
   useEffect(() => {
     if (records.length === 0) {
       loadRecords().catch(error => {
-        alert("Loading records failed" + error);
+        toast.error(
+          String.format(T.t("loadingRecordsFailed"),
+          error));
       });
     } else {
       setRecord({ ...props.record });
@@ -55,7 +60,7 @@ export function ManageRecordPage({
     setSaving(true);
     saveRecord(record)
       .then(() => {
-        toast.success("Record saved.");
+        toast.success(T.t("recordSaved"));
         history.push("/records");
       })
       .catch(error => {
@@ -68,13 +73,19 @@ export function ManageRecordPage({
   //   <Spinner />
   // ) : 
   return (
-    <RecordForm
-      record={record}
-      errors={errors}
-      onChange={handleChange}
-      onSave={handleSave}
-      saving={saving}
-    />
+    <>
+      <Back history={this.props.history} />
+      <PageTitle 
+        title={record.id ? T.t("editRecord") : T.t("createRecord")}
+        />
+      <RecordForm
+        record={record}
+        errors={errors}
+        onChange={handleChange}
+        onSave={handleSave}
+        saving={saving}
+      />
+    </>
   );
 }
 

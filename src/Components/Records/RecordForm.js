@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TextInput from "../Common/TextInput";
+import T from '../../Localization/i18n';
 
 const RecordForm = ({
   record,
@@ -11,7 +12,6 @@ const RecordForm = ({
 }) => {
   return (
     <form onSubmit={onSave}>
-      <h2>{record.id ? "Edit" : "Add"} Record</h2>
       {errors.onSave && (
         <div className="alert alert-danger" role="alert">
           {errors.onSave}
@@ -26,7 +26,7 @@ const RecordForm = ({
       />
 
       <button type="submit" disabled={saving} className="btn btn-primary">
-        {saving ? "Saving..." : "Save"}
+        {saving ? T.t("saving") : T.t("save")}
       </button>
     </form>
   );

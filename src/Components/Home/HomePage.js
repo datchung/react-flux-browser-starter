@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Back from "../Common/Back";
 import PageTitle from "../Common/PageTitle";
+import T from '../../Localization/i18n';
 
 const HomePage = (props) => (
   <>
     <Back history={props.history} />
-    <PageTitle title="Record App" />
-    <p>React, Redux and React Router for ultra-responsive web apps.</p>
+    <PageTitle title={T.t("appTitle")}/>
+    <p>{T.t("homeText")}</p>
     <Link to="about" className="btn btn-primary btn-lg">
-      Learn more
+      {T.t("learnMore")}
     </Link>
   </>
 );

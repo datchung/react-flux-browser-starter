@@ -27,7 +27,9 @@ class RecordsPage extends React.Component {
 
     if (records.length === 0) {
       actions.loadRecords().catch(error => {
-        alert("Loading records failed" + error);
+        toast.error(
+          String.format(T.t("loadingRecordsFailed"),
+          error));
       });
     }
   }
@@ -37,9 +39,11 @@ class RecordsPage extends React.Component {
     try {
       await this.props.actions.deleteRecord(record.id);
       // this.state.loading = false;
-      toast.success("Record deleted");
+      toast.success(T.t("recordDeleted"));
     } catch (error) {
-      toast.error("Delete failed. " + error.message, { autoClose: false });
+      toast.error(
+        String.format(T.t("deleteFailed"), error.message), 
+        { autoClose: false });
     }
   };
 
@@ -47,7 +51,9 @@ class RecordsPage extends React.Component {
     try {
       await this.props.actions.toggleRecord(record);
     } catch (error) {
-      toast.error("Toggle failed. " + error.message, { autoClose: false });
+      toast.error(
+        String.format(T.t("toggleFailed"), error.message),
+        { autoClose: false });
     }
   };
 
@@ -60,7 +66,9 @@ class RecordsPage extends React.Component {
         selectedFilter: filter
       });
     } catch (error) {
-      toast.error("Filter failed. " + error.message, { autoClose: false });
+      toast.error(
+        String.format(T.t("filterFailed"), error.message),
+        { autoClose: false });
     }
   }
 
@@ -73,7 +81,9 @@ class RecordsPage extends React.Component {
         selectedSort: sort
       });
     } catch (error) {
-      toast.error("Sort failed. " + error.message, { autoClose: false });
+      toast.error(
+        String.format(T.t("sortFailed"), error.message),
+        { autoClose: false });
     }
   }
 
@@ -83,7 +93,7 @@ class RecordsPage extends React.Component {
         {this.state.redirectToAddRecordPage && <Redirect to="/record" />}
         {/* {(this.props.loading || this.state.loading) ? ( */}
         <Back history={this.props.history} />
-        <PageTitle title="Records" />
+        <PageTitle title={T.t("records")} />
         {this.props.loading ? (
           <Spinner />
         ) : (
