@@ -41,7 +41,6 @@ class RecordsPage extends React.Component {
     });
     try {
       await this.props.actions.deleteRecord(record.id);
-      // this.state.loading = false;
       toast.success(T.t("recordDeleted"));
     } catch (error) {
       toast.error(
