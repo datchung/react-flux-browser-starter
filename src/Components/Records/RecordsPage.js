@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 
 class RecordsPage extends React.Component {
   state = {
-    // loading: false,
+    loading: false,
     redirectToAddRecordPage: false,
     filterOptions: ["all", "notDone", "done"],
     selectedFilter: "all",
@@ -35,7 +35,10 @@ class RecordsPage extends React.Component {
   }
 
   handleDeleteRecord = async record => {
-    // this.state.loading = true;
+    this.setState({
+      ...this.state,
+      isLoading: true
+    });
     try {
       await this.props.actions.deleteRecord(record.id);
       // this.state.loading = false;
@@ -45,6 +48,10 @@ class RecordsPage extends React.Component {
         String.format(T.t("deleteFailed"), error.message), 
         { autoClose: false });
     }
+    this.setState({
+      ...this.state,
+      isLoading: false
+    });
   };
 
   handleToggleRecord = async record => {
@@ -91,10 +98,9 @@ class RecordsPage extends React.Component {
     return (
       <>
         {this.state.redirectToAddRecordPage && <Redirect to="/record" />}
-        {/* {(this.props.loading || this.state.loading) ? ( */}
         <Back history={this.props.history} />
         <PageTitle title={T.t("records")} />
-        {this.props.loading ? (
+        {(this.props.loading || this.state.loading) ? (
           <Spinner />
         ) : (
           <>
