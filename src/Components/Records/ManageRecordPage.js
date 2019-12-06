@@ -7,7 +7,7 @@ import PageTitle from "../Common/PageTitle";
 import PropTypes from "prop-types";
 import RecordForm from "./RecordForm";
 import { newRecord } from "../../../tools/mockData";
-//import Spinner from "../Common/Spinner";
+import Spinner from "../Common/Spinner";
 import { toast } from "react-toastify";
 
 export function ManageRecordPage({
@@ -42,12 +42,10 @@ export function ManageRecordPage({
   }
 
   function formIsValid() {
-    // const { title, authorId, category } = record;
+    const { text } = record;
     const errors = {};
 
-    // if (!title) errors.title = "Title is required.";
-    // if (!authorId) errors.author = "Author is required";
-    // if (!category) errors.category = "Category is required";
+    if (!text) errors.text = "Text is required.";
 
     setErrors(errors);
     // Form is valid if the errors object still has no properties
@@ -74,7 +72,7 @@ export function ManageRecordPage({
   // ) : 
   return (
     <>
-      <Back history={this.props.history} />
+      <Back history={history} />
       <PageTitle 
         title={record.id ? T.t("editRecord") : T.t("createRecord")}
         />
