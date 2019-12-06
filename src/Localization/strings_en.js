@@ -36,4 +36,5 @@ export default {
   "aboutText": "This app uses React, Redux, React Router, and many other helpful libraries.",
   "homeText": "React, Redux and React Router for ultra-responsive web apps.",
   "learnMore": "Learn more",
+  "errorText": "Text is required.",
 };

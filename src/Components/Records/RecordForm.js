@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import TextInput from "../Common/TextInput";
+import TextAreaInput from "../Common/TextAreaInput";
 import T from '../../Localization/i18n';
 
 const RecordForm = ({
@@ -11,24 +11,41 @@ const RecordForm = ({
   errors = {}
 }) => {
   return (
-    <form onSubmit={onSave}>
-      {errors.onSave && (
-        <div className="alert alert-danger" role="alert">
-          {errors.onSave}
-        </div>
-      )}
-      <TextInput
-        name="text"
-        label="Todo"
-        value={record.text}
-        onChange={onChange}
-        error={errors.text}
-      />
+    <div className="columns">
+      <div className="column">
+        <form onSubmit={onSave}>
+          {errors.onSave && (
+            <div className="alert alert-danger" role="alert">
+              {errors.onSave}
+            </div>
+          )}
 
-      <button type="submit" disabled={saving} className="btn btn-primary">
-        {saving ? T.t("saving") : T.t("save")}
-      </button>
-    </form>
+          <div className="field">
+            <div className="control">
+              <TextAreaInput
+                name="text"
+                label=""
+                rows="8"
+                value={record.text}
+                onChange={onChange}
+                error={errors.text}
+                />
+            </div>
+          </div>
+          
+          <div className="field">
+            <div className="control">
+              <button
+                type="submit"
+                className="button is-primary"
+                >
+                {saving ? T.t("saving") : T.t("save")}
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 
