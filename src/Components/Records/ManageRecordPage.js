@@ -7,7 +7,7 @@ import PageTitle from "../Common/PageTitle";
 import PropTypes from "prop-types";
 import RecordForm from "./RecordForm";
 import { newRecord } from "../../../tools/mockData";
-import Spinner from "../Common/Spinner";
+// import Spinner from "../Common/Spinner";
 import { toast } from "react-toastify";
 
 export function ManageRecordPage({
