@@ -98,7 +98,7 @@ class RecordsPage extends React.Component {
       <>
         {this.state.redirectToAddRecordPage && <Redirect to="/record" />}
         <Back history={this.props.history} />
-        <PageTitle title={T.t("records")} />
+        <PageTitle title={T.t("recordsTitle")} />
         {(this.props.loading || this.state.loading) ? (
           <Spinner />
         ) : (
