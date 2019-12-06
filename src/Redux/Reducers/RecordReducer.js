@@ -4,9 +4,11 @@ import initialState from "./InitialState";
 export default function recordReducer(state = initialState.records, action) {
   switch (action.type) {
     case types.SAVE_RECORD_SUCCESS:
+      // New record
       if(!state.find(s => s.id === action.record.id))
         return [...state, action.record];
       
+      // Update existing record
       return state.map(s => {
         return s.id != action.record.id ? s : action.record;
       });
