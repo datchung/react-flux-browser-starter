@@ -8,14 +8,13 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Spinner from "../Common/Spinner";
 import { toast } from "react-toastify";
 
 class RecordsPage extends React.Component {
   state = {
     loading: false,
-    redirectToAddRecordPage: false,
     filterOptions: ["all", "notDone", "done"],
     selectedFilter: "all",
     sortOptions: ["newestFirst", "oldestFirst"],
@@ -96,7 +95,6 @@ class RecordsPage extends React.Component {
   render() {
     return (
       <>
-        {this.state.redirectToAddRecordPage && <Redirect to="/record" />}
         <Back history={this.props.history} />
         <PageTitle title={T.t("recordsTitle")} />
         {(this.props.loading || this.state.loading) ? (
@@ -113,11 +111,13 @@ class RecordsPage extends React.Component {
               />
             <div className="card">
               <div className="card-content">
-                <button
-                  className="button is-primary is-fullwidth"
-                  onClick={() => this.setState({ redirectToAddRecordPage: true })}>
-                  {T.t("createRecord")}
-                </button>
+                <Link to="/record">
+                  <button
+                    className="button is-primary is-fullwidth"
+                    >
+                    {T.t("createRecord")}
+                  </button>
+                </Link>
               </div>
             </div>
 
