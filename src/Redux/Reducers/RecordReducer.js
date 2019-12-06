@@ -4,7 +4,9 @@ import initialState from "./InitialState";
 export default function recordReducer(state = initialState.records, action) {
   switch (action.type) {
     case types.SAVE_RECORD_SUCCESS:
-      return [...state, { ...action.record }];
+      return state.map(s => {
+        return s.id != action.record.id ? s : action.record;
+      });
     case types.TOGGLE_RECORD_SUCCESS:
       return state.map(s => {
         if(s.id != action.record.id) return s;
