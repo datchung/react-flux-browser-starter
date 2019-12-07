@@ -15,6 +15,7 @@ export default {
   "about": "О программе",
   "saving": "Сохранение...",
   "recordSaved": "Сохранено",
+  "recordDeleted": "удалено",
 
   // Custom
   "appTitle": "Приложение записей",
@@ -23,7 +24,6 @@ export default {
   "createRecord": "Создать новую запись",
   "editRecord": "Редактировать запись",
   "loadingRecordsFailed": "Загрузка записей не удалась. {0}",
-  "recordDeleted": "Запись удалена",
   "deleteFailed": "Удалить не удалось. {0}",
   "toggleFailed": "Переключить не удалось. {0}",
   "filterFailed": "Фильтр не выполнен. {0}",

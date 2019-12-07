@@ -15,6 +15,7 @@ export default {
   "about": "关于",
   "saving": "正在保存...",
   "recordSaved": "已保存",
+  "recordDeleted": "已删除",
 
   // Custom
   "appTitle": "记录应用",
@@ -23,7 +24,6 @@ export default {
   "createRecord": "建立新纪录",
   "editRecord": "编辑记录",
   "loadingRecordsFailed": "加载记录失败。 {0}",
-  "recordDeleted": "记录已删除",
   "deleteFailed": "删除失败。 {0}",
   "toggleFailed": "切换失败。 {0}",
   "filterFailed": "筛选失败。 {0}",

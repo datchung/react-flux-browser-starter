@@ -15,6 +15,7 @@ export default {
   "about": "About",
   "saving": "Saving...",
   "recordSaved": "Record saved",
+  "recordDeleted": "Record deleted",
 
   // Custom
   "appTitle": "Records App",
@@ -23,7 +24,6 @@ export default {
   "createRecord": "Create New Record",
   "editRecord": "Edit Record",
   "loadingRecordsFailed": "Loading records failed. {0}",
-  "recordDeleted": "Record deleted",
   "deleteFailed": "Delete failed. {0}",
   "toggleFailed": "Toggle failed. {0}",
   "filterFailed": "Filter failed. {0}",

@@ -15,6 +15,7 @@ export default {
   "about": "Información",
   "saving": "Guardar en curso...",
   "recordSaved": "Guardado",
+  "recordDeleted": "Eliminado",
 
   // Custom
   "appTitle": "Aplicación de registros",
@@ -23,7 +24,6 @@ export default {
   "createRecord": "Crear nuevo registro",
   "editRecord": "Editar registro",
   "loadingRecordsFailed": "Cargando registros fallidos. {0}",
-  "recordDeleted": "Registro eliminado",
   "deleteFailed": "Eliminar falló. {0}",
   "toggleFailed": "Toggle falló. {0}",
   "filterFailed": "El filtro falló. {0}",

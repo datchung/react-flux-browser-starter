@@ -15,6 +15,7 @@ export default {
   "about": "Sobre",
   "saving": "Salvando...",
   "recordSaved": "Salvo",
+  "recordDeleted": "Excluída",
 
   // Custom
   "appTitle": "Aplicação de registros",
@@ -23,7 +24,6 @@ export default {
   "createRecord": "Criar novo registro",
   "editRecord": "Editar registro",
   "loadingRecordsFailed": "O carregamento dos registros falhou. {0}",
-  "recordDeleted": "Registro excluído",
   "deleteFailed": "Falha na exclusão. {0}",
   "toggleFailed": "A alternância falhou. {0}",
   "filterFailed": "O filtro falhou. {0}",

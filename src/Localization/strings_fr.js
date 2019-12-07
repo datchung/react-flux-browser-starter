@@ -15,6 +15,7 @@ export default {
   "about": "À propos",
   "saving": "Enregistrement...",
   "recordSaved": "Enregistré",
+  "recordDeleted": "Supprimée",
 
   // Custom
   "appTitle": "Application des enregistrements",
@@ -23,7 +24,6 @@ export default {
   "createRecord": "Créer un nouvel enregistrement",
   "editRecord": "Modifier l'enregistrement",
   "loadingRecordsFailed": "Le chargement des enregistrements a échoué. {0}",
-  "recordDeleted": "Enregistrement supprimé",
   "deleteFailed": "La suppression a échoué. {0}",
   "toggleFailed": "Le basculement a échoué. {0}",
   "filterFailed": "Le filtre a échoué. {0}",
