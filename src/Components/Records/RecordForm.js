@@ -15,7 +15,8 @@ const RecordForm = ({
       <div className="column">
         <form onSubmit={onSave}>
           {errors.onSave && (
-            <div className="alert alert-danger" role="alert">
+            <div className="notification is-danger">
+              <button className="delete"></button>
               {errors.onSave}
             </div>
           )}
