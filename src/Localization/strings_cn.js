@@ -1,4 +1,5 @@
 export default {
+  // Generic
   "back": "返回",
   "notFound": "未找到",
   "filter": "筛选",
@@ -15,6 +16,7 @@ export default {
   "saving": "正在保存...",
   "recordSaved": "已保存",
 
+  // Custom
   "appTitle": "记录应用",
   "recordsTitle": "记录",
   "records": "记录",
