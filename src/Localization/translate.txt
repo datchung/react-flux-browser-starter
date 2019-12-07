@@ -1,33 +1,18 @@
-Minimalist Task List
-
-Edit Task
-Create New Task
-
-all
-
-not done
-done
-incomplete
-complete
-not finished
-finished
-
-New to Old
-Old to New
-
-Text is required
-
-No tasks.
-Click the button below to add.
-
-Congratulations.
-All tasks completed.
-
-1 of 1 task remaining
-2 of 3 tasks remaining
-
-task
-tasks
+Records App
+Records
+records
+Create New Record
+Edit Record
+Loading records failed. {0}
+Record deleted
+Delete failed. {0}
+Toggle failed. {0}
+Filter failed. {0}
+Sort failed. {0}
+This app uses React, Redux, React Router, and many other helpful libraries.
+React, Redux and React Router for ultra-responsive web apps.
+Learn more
+Text is required.
 
 Clean the house
 Wash car
