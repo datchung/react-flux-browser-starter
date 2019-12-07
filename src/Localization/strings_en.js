@@ -1,12 +1,4 @@
 export default {
-  "title": " Minimalist Todo List",
-  
-  "textRequired": "Text is required",
-  "noTodos": "You have no todos. Click the button below to add.",
-  "allDone": "Congrats. You completed all your todos!",
-  "todoRemaining": "{0} of {1} {2} remaining",
-  "todo": "todo",
-
   "appTitle": "Records App",
   "notFound": "Page not found",
   "back": "Back",
@@ -36,5 +28,5 @@ export default {
   "aboutText": "This app uses React, Redux, React Router, and many other helpful libraries.",
   "homeText": "React, Redux and React Router for ultra-responsive web apps.",
   "learnMore": "Learn more",
-  "errorText": "Text is required.",
+  "textError": "Text is required.",
 };

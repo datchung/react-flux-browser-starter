@@ -45,7 +45,7 @@ export function ManageRecordPage({
     const { text } = record;
     const errors = {};
 
-    if (!text) errors.text = T.t("errorText");
+    if (!text) errors.text = T.t("textError");
 
     setErrors(errors);
     // Form is valid if the errors object still has no properties
