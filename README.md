@@ -9,3 +9,8 @@ Simple starter project for react + redux in browser
 
 # Features
 
+* File watcher with lint and build
+* Hot reloading
+* Optimized production/release build
+* String localization in CN, EN, ES, FR, PT, RU
+* Unit tests (TODO)
