@@ -62,6 +62,10 @@ export function saveRecord(record) {
   }
 
   // Update existing record
+  return updateRecord(records, record);
+}
+
+function updateRecord(records, record) {
   var modifiedRecords = records.map(r => {
     if(r.id !== record.id) return r;
     record = {
