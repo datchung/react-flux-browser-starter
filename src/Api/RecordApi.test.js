@@ -19,6 +19,26 @@ it("getRecords", function() {
   expect(records.length).toEqual(2);
 });
 
+test.each([
+  ["notDone", "[{text:'text1',isComplete:false},{text:'text2',isComplete:false}]", "text1,text2"]
+])("getFilteredRecords", (filter, allRecords, expectedRecords) => {
+  // arrange
+  var mockPersistence = {};
+  mockPersistence.getSavedRecords = function() {
+    return [
+      createRecord("text1", false),
+      createRecord("text2", false)
+    ]
+  };
+  setRecordPersistence(mockPersistence);
+
+  // act
+  var actualRecords = getFilteredRecords("notDone");
+
+  // assert
+  expect(actualRecords.length).toEqual(2);
+});
+
 it("getFilteredRecords('notDone') all", function() {
   // arrange
   var mockPersistence = {};
